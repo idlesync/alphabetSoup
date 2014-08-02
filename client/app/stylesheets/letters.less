@@ -1,0 +1,65 @@
+@letter-font-size: 1.1em;
+@letter-size: 1.5em;
+@letter-dark-shadow: rgba(0, 0, 0, 0.5);
+@letter-light-shadow: rgba(128, 128, 128, 0.3);
+@letter-text-color: @gray-lighter;
+
+.letters-canvas {
+  background-color: @gray-lighter;
+  height: 600px;
+  margin: 0 auto 40px;
+  position: relative;
+  width: 750px;
+
+  &.circle-letters {
+    border-radius: @letter-size / 2;
+  }
+
+  &.box-shadowed-letters {
+    box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .letter-item {
+    left: 0;
+    top: 0;
+    position: absolute !important; // overcomes inline style from jquery.ui.draggable position: relative
+    cursor: pointer;
+    cursor: -webkit-grab;
+
+    &:active {
+    cursor: -webkit-grabbing;
+    }
+  }
+}
+
+.letter-item {
+  color: @letter-text-color;
+  display: block;
+  font-size: @letter-font-size;
+  font-weight: normal;
+  height: @letter-size;
+  line-height: @letter-size;
+  text-align: center;
+  text-shadow: -1px -1px 0 @letter-light-shadow, // top left
+                1px 1px 0 @letter-dark-shadow, // bottom right
+                -1px 1px 0 @letter-dark-shadow, // bottom left
+                1px -1px 0 @letter-light-shadow, // top right
+                0 1px 0 @letter-dark-shadow, // bottom
+                0 -1px 0 @letter-light-shadow, // top
+                1px 0 0 @letter-dark-shadow, // right
+                -1px 0 0 @letter-light-shadow; // left
+  text-transform: uppercase;
+  width: @letter-size;
+}
+
+.box-shadowed-letters {
+  .letter-item {
+    box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.3), -1px -1px 0 0 rgba(255, 255, 255, 0.7);
+  }
+}
+
+.circle-letters {
+  .letter-item {
+    border-radius: @letter-size / 2;
+  }
+}

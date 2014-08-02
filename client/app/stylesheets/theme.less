@@ -1,0 +1,23 @@
+@font-family-base: @font-family-monospace;
+
+@body-bg: @gray;
+@text-color: @gray-lighter;
+@link-color: @brand-warning;
+
+@input-bg: @gray-lighter;
+
+@panel-bg: transparent;
+@table-bg-hover: @gray-dark;
+
+.form-control-focus(@color: @input-border-focus) {
+  @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
+  &:focus {
+    border-color: transparent;
+    outline: none;
+    .box-shadow(~"0 0 0 2px @{color-rgba}");
+  }
+}
+
+.form-control {
+  .form-control-focus(@brand-warning);
+}
